@@ -1,0 +1,10 @@
+c:\users\manuel\documents\visual studio 2013\Projects\Practica1\Practica1\bin\Debug\Practica1.exe.config
+c:\users\manuel\documents\visual studio 2013\Projects\Practica1\Practica1\bin\Debug\Practica1.exe
+c:\users\manuel\documents\visual studio 2013\Projects\Practica1\Practica1\bin\Debug\Practica1.pdb
+c:\users\manuel\documents\visual studio 2013\Projects\Practica1\Practica1\bin\Debug\Practica1.xml
+c:\users\manuel\documents\visual studio 2013\Projects\Practica1\Practica1\obj\Debug\Practica1.Form1.resources
+c:\users\manuel\documents\visual studio 2013\Projects\Practica1\Practica1\obj\Debug\Practica1.Resources.resources
+c:\users\manuel\documents\visual studio 2013\Projects\Practica1\Practica1\obj\Debug\Practica1.vbproj.GenerateResource.Cache
+c:\users\manuel\documents\visual studio 2013\Projects\Practica1\Practica1\obj\Debug\Practica1.exe
+c:\users\manuel\documents\visual studio 2013\Projects\Practica1\Practica1\obj\Debug\Practica1.xml
+c:\users\manuel\documents\visual studio 2013\Projects\Practica1\Practica1\obj\Debug\Practica1.pdb
