@@ -10,23 +10,35 @@ Public Class Analizador
         salida = New List(Of Token)
         estado = 0
         aux = ""
+        Dim contador As Integer = 0
+        Dim contadors As Integer = 0
+        Dim contador2 As Integer = 0
         Dim c As Char
         For i As Integer = 0 To entrada.Length - 1 Step 1
             c = entrada.Chars(i)
             Select Case estado
                 Case 0
-                    If Char.IsDigit(c) Then
-                        estado = 1
-                        aux += c
+                    If Char.IsNumber(c) Then
+                        contador = contador + 1
+                        If (contador = 4) Then
+                            aux += c
+                            estado = 1
+                            addToken(Tipo.Numero)
+                        Else
+                            estado = 0
+                        End If
                     ElseIf (c = ":") Then
                         aux += c
                         addToken(Tipo.DosPuntos)
-                    ElseIf (c = "[a-zA-z]") Then
+                    ElseIf (c = "[a-z]") Then
                         aux += c
                         addToken(Tipo.Letra)
-                    ElseIf (c = "[0-9]") Then
+                    ElseIf (c = "(") Then
                         aux += c
-                        addToken(Tipo.Numero)
+                        addToken(Tipo.Paren_Izq)
+                    ElseIf (c = ")") Then
+                        aux += c
+                        addToken(Tipo.Paren_Der)
                     Else
                         If (c = "#" And i = entrada.Length() - 1) Then
                             Console.WriteLine("Se ha concluido el análisis correctamente")
@@ -35,18 +47,27 @@ Public Class Analizador
                         End If
                     End If
                 Case 1
-                    If Char.IsPunctuation(c) Then
+                    If (c = ":") Then
+
                         estado = 2
                         aux += c
+                        addToken(Tipo.DosPuntos)
+
                     Else
-                        Console.WriteLine("Error léxico en: " & c & " Se esperan un dos puntos")
+                        Console.WriteLine("Error léxico en: " & c & " Se esperaba un paréntesis abierto")
                         estado = 0
                     End If
                 Case 2
-                    If Char.IsLetterOrDigit(c) Then
-                        estado = 3
-                        aux += c
-
+                    If Char.IsLetter(c) Then
+                        contadors = contadors + 1
+                        If (contadors = 11) Then
+                            aux += c
+                            estado = 3
+                            addToken(Tipo.Letra)
+                        Else
+                            aux += c
+                            estado = 2
+                        End If
                     Else
                         Console.WriteLine("Error léxico en: " & c & " Se esperaba un nombre al curso")
                         estado = 0
@@ -60,7 +81,7 @@ Public Class Analizador
                         estado = 0
                     End If
                 Case 4
-                    If Char.IsDigit(c) Then
+                    If Char.IsNumber(c) Then
                         estado = 4
                         aux += c
                     ElseIf (c = "") Then
@@ -74,6 +95,7 @@ Public Class Analizador
         Return salida
     End Function
     Private Sub addToken(ByVal tipo As Tipo)
+        salida.Add(New Token(tipo, aux))
         aux = ""
         estado = 0
     End Sub

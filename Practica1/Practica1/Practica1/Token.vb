@@ -5,7 +5,8 @@ Public Class Token
         Numero
         DosPuntos
         Letra
-
+        Paren_Izq
+        Paren_Der
     End Enum
     Private tipoToken As Tipo
     Private valor As String
@@ -22,11 +23,15 @@ Public Class Token
     Public Function getString() As String
         Select Case tipoToken
             Case Tipo.Letra
-                Return "Nombre"
+                Return "Letra"
             Case Tipo.DosPuntos
                 Return "Dos Puntos"
             Case Tipo.Numero
                 Return "Número"
+            Case Tipo.Paren_Izq
+                Return "Parentesis Izquierdo"
+            Case Tipo.Paren_Der
+                Return "Parentesis Derecho"
             Case Else
                 Return "Desconocido"
         End Select
